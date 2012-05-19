@@ -103,9 +103,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        // Pass the account into the StreamViewController to
-        // view the stream of tweets.
+    if ([[segue identifier] isEqualToString:@"showSearch"]) {
+        // Pass the account into the SearchViewController to
+        // build search stream request
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = [self.accounts objectAtIndex:indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
