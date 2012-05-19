@@ -14,13 +14,15 @@
 		490619661566E7D30088D940 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619651566E7D30088D940 /* main.m */; };
 		4906196A1566E7D30088D940 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619691566E7D30088D940 /* AppDelegate.m */; };
 		4906196D1566E7D30088D940 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4906196B1566E7D30088D940 /* MainStoryboard.storyboard */; };
-		490619701566E7D30088D940 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4906196F1566E7D30088D940 /* MasterViewController.m */; };
+		490619701566E7D30088D940 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4906196F1566E7D30088D940 /* AccountViewController.m */; };
 		490619731566E7D30088D940 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619721566E7D30088D940 /* DetailViewController.m */; };
 		4906197B1566E7D40088D940 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4906197A1566E7D40088D940 /* SenTestingKit.framework */; };
 		4906197C1566E7D40088D940 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619591566E7D30088D940 /* UIKit.framework */; };
 		4906197D1566E7D40088D940 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4906195B1566E7D30088D940 /* Foundation.framework */; };
 		490619851566E7D40088D940 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 490619831566E7D40088D940 /* InfoPlist.strings */; };
 		490619881566E7D40088D940 /* StwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619871566E7D40088D940 /* StwitterTests.m */; };
+		490619921566ED630088D940 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619911566ED630088D940 /* Twitter.framework */; };
+		490619941566EECE0088D940 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619931566EECE0088D940 /* Accounts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +47,8 @@
 		490619681566E7D30088D940 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		490619691566E7D30088D940 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4906196C1566E7D30088D940 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4906196E1566E7D30088D940 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		4906196F1566E7D30088D940 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		4906196E1566E7D30088D940 /* AccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		4906196F1566E7D30088D940 /* AccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		490619711566E7D30088D940 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		490619721566E7D30088D940 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		490619791566E7D40088D940 /* StwitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StwitterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,8 @@
 		490619841566E7D40088D940 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		490619861566E7D40088D940 /* StwitterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StwitterTests.h; sourceTree = "<group>"; };
 		490619871566E7D40088D940 /* StwitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StwitterTests.m; sourceTree = "<group>"; };
+		490619911566ED630088D940 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		490619931566EECE0088D940 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490619941566EECE0088D940 /* Accounts.framework in Frameworks */,
+				490619921566ED630088D940 /* Twitter.framework in Frameworks */,
 				4906195A1566E7D30088D940 /* UIKit.framework in Frameworks */,
 				4906195C1566E7D30088D940 /* Foundation.framework in Frameworks */,
 				4906195E1566E7D30088D940 /* CoreGraphics.framework in Frameworks */,
@@ -84,6 +90,7 @@
 		4906194A1566E7D30088D940 = {
 			isa = PBXGroup;
 			children = (
+				490619931566EECE0088D940 /* Accounts.framework */,
 				4906195F1566E7D30088D940 /* Stwitter */,
 				490619801566E7D40088D940 /* StwitterTests */,
 				490619581566E7D30088D940 /* Frameworks */,
@@ -103,6 +110,7 @@
 		490619581566E7D30088D940 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				490619911566ED630088D940 /* Twitter.framework */,
 				490619591566E7D30088D940 /* UIKit.framework */,
 				4906195B1566E7D30088D940 /* Foundation.framework */,
 				4906195D1566E7D30088D940 /* CoreGraphics.framework */,
@@ -117,8 +125,8 @@
 				490619681566E7D30088D940 /* AppDelegate.h */,
 				490619691566E7D30088D940 /* AppDelegate.m */,
 				4906196B1566E7D30088D940 /* MainStoryboard.storyboard */,
-				4906196E1566E7D30088D940 /* MasterViewController.h */,
-				4906196F1566E7D30088D940 /* MasterViewController.m */,
+				4906196E1566E7D30088D940 /* AccountViewController.h */,
+				4906196F1566E7D30088D940 /* AccountViewController.m */,
 				490619711566E7D30088D940 /* DetailViewController.h */,
 				490619721566E7D30088D940 /* DetailViewController.m */,
 				490619601566E7D30088D940 /* Supporting Files */,
@@ -265,7 +273,7 @@
 			files = (
 				490619661566E7D30088D940 /* main.m in Sources */,
 				4906196A1566E7D30088D940 /* AppDelegate.m in Sources */,
-				490619701566E7D30088D940 /* MasterViewController.m in Sources */,
+				490619701566E7D30088D940 /* AccountViewController.m in Sources */,
 				490619731566E7D30088D940 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,7 +329,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -346,7 +354,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

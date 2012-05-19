@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  AccountViewController.h
 //  Stwitter
 //
 //  Created by Andrew Long on 5/18/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController
+@interface AccountViewController : UITableViewController
 
 @end
