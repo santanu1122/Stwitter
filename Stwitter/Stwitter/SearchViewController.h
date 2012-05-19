@@ -1,5 +1,5 @@
 //
-//  DetailViewController.h
+//  SearchViewController.h
 //  Stwitter
 //
 //  Created by Andrew Long on 5/18/12.
@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/Accounts.h>
 
-@interface DetailViewController : UIViewController
+@interface SearchViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) ACAccount* account;
 
 @property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 

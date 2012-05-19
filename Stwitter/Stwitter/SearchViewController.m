@@ -1,28 +1,28 @@
 //
-//  DetailViewController.m
+//  SearchViewController.m
 //  Stwitter
 //
 //  Created by Andrew Long on 5/18/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "SearchViewController.h"
 
-@interface DetailViewController ()
+@interface SearchViewController ()
 - (void)configureView;
 @end
 
-@implementation DetailViewController
+@implementation SearchViewController
 
-@synthesize detailItem = _detailItem;
+@synthesize account = _account;
 @synthesize detailDescriptionLabel = _detailDescriptionLabel;
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setAccount:(ACAccount *)newAccount
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_account != newAccount) {
+        _account = newAccount;
         
         // Update the view.
         [self configureView];
@@ -33,8 +33,8 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (self.account) {
+        self.detailDescriptionLabel.text = [self.account description];
     }
 }
 

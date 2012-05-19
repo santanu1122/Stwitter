@@ -11,7 +11,7 @@
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 
-#import "DetailViewController.h"
+#import "SearchViewController.h"
 
 @interface AccountViewController ()
 
@@ -107,8 +107,7 @@
         // Pass the account into the SearchViewController to
         // build search stream request
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = [self.accounts objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        [[segue destinationViewController] setAccount:[self.accounts objectAtIndex:indexPath.row]];
     }
 }
 

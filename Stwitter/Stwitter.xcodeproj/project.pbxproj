@@ -15,7 +15,7 @@
 		4906196A1566E7D30088D940 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619691566E7D30088D940 /* AppDelegate.m */; };
 		4906196D1566E7D30088D940 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4906196B1566E7D30088D940 /* MainStoryboard.storyboard */; };
 		490619701566E7D30088D940 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4906196F1566E7D30088D940 /* AccountViewController.m */; };
-		490619731566E7D30088D940 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619721566E7D30088D940 /* DetailViewController.m */; };
+		490619731566E7D30088D940 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619721566E7D30088D940 /* SearchViewController.m */; };
 		4906197B1566E7D40088D940 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4906197A1566E7D40088D940 /* SenTestingKit.framework */; };
 		4906197C1566E7D40088D940 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619591566E7D30088D940 /* UIKit.framework */; };
 		4906197D1566E7D40088D940 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4906195B1566E7D30088D940 /* Foundation.framework */; };
@@ -49,8 +49,8 @@
 		4906196C1566E7D30088D940 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4906196E1566E7D30088D940 /* AccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		4906196F1566E7D30088D940 /* AccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
-		490619711566E7D30088D940 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		490619721566E7D30088D940 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		490619711566E7D30088D940 /* SearchViewController.h */ = {isa = PBXFileReference; path = SearchViewController.h; sourceTree = "<group>"; };
+		490619721566E7D30088D940 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		490619791566E7D40088D940 /* StwitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StwitterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4906197A1566E7D40088D940 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		490619821566E7D40088D940 /* StwitterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StwitterTests-Info.plist"; sourceTree = "<group>"; };
@@ -127,8 +127,8 @@
 				4906196B1566E7D30088D940 /* MainStoryboard.storyboard */,
 				4906196E1566E7D30088D940 /* AccountViewController.h */,
 				4906196F1566E7D30088D940 /* AccountViewController.m */,
-				490619711566E7D30088D940 /* DetailViewController.h */,
-				490619721566E7D30088D940 /* DetailViewController.m */,
+				490619711566E7D30088D940 /* SearchViewController.h */,
+				490619721566E7D30088D940 /* SearchViewController.m */,
 				490619601566E7D30088D940 /* Supporting Files */,
 			);
 			path = Stwitter;
@@ -274,7 +274,7 @@
 				490619661566E7D30088D940 /* main.m in Sources */,
 				4906196A1566E7D30088D940 /* AppDelegate.m in Sources */,
 				490619701566E7D30088D940 /* AccountViewController.m in Sources */,
-				490619731566E7D30088D940 /* DetailViewController.m in Sources */,
+				490619731566E7D30088D940 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +444,7 @@
 				4906198D1566E7D40088D940 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4906198E1566E7D40088D940 /* Build configuration list for PBXNativeTarget "StwitterTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +453,7 @@
 				490619901566E7D40088D940 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
