@@ -57,4 +57,16 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self performSegueWithIdentifier:@"showStream" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showStream"]) {
+        [[segue destinationViewController] setStream:nil];
+    }
+}
+
 @end

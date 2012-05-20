@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController : UIViewController <UISearchBarDelegate>
 
 @property (strong, nonatomic) ACAccount* account;
 

@@ -23,6 +23,7 @@
 		490619881566E7D40088D940 /* StwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619871566E7D40088D940 /* StwitterTests.m */; };
 		490619921566ED630088D940 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619911566ED630088D940 /* Twitter.framework */; };
 		490619941566EECE0088D940 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619931566EECE0088D940 /* Accounts.framework */; };
+		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,7 @@
 		4906196C1566E7D30088D940 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4906196E1566E7D30088D940 /* AccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		4906196F1566E7D30088D940 /* AccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
-		490619711566E7D30088D940 /* SearchViewController.h */ = {isa = PBXFileReference; path = SearchViewController.h; sourceTree = "<group>"; };
+		490619711566E7D30088D940 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		490619721566E7D30088D940 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		490619791566E7D40088D940 /* StwitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StwitterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4906197A1566E7D40088D940 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -59,6 +60,8 @@
 		490619871566E7D40088D940 /* StwitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StwitterTests.m; sourceTree = "<group>"; };
 		490619911566ED630088D940 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		490619931566EECE0088D940 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewController.h; sourceTree = "<group>"; };
+		49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 		4906195F1566E7D30088D940 /* Stwitter */ = {
 			isa = PBXGroup;
 			children = (
+				49E7F7101569A94C009AAA16 /* TwitterStream */,
 				490619681566E7D30088D940 /* AppDelegate.h */,
 				490619691566E7D30088D940 /* AppDelegate.m */,
 				4906196B1566E7D30088D940 /* MainStoryboard.storyboard */,
@@ -130,6 +134,8 @@
 				490619711566E7D30088D940 /* SearchViewController.h */,
 				490619721566E7D30088D940 /* SearchViewController.m */,
 				490619601566E7D30088D940 /* Supporting Files */,
+				49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */,
+				49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */,
 			);
 			path = Stwitter;
 			sourceTree = "<group>";
@@ -162,6 +168,14 @@
 				490619831566E7D40088D940 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49E7F7101569A94C009AAA16 /* TwitterStream */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TwitterStream;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +289,7 @@
 				4906196A1566E7D30088D940 /* AppDelegate.m in Sources */,
 				490619701566E7D30088D940 /* AccountViewController.m in Sources */,
 				490619731566E7D30088D940 /* SearchViewController.m in Sources */,
+				49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
