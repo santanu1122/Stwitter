@@ -7,15 +7,20 @@
 //
 
 #import "SearchViewController.h"
+#import "FilteredTwitterStream.h"
+
+@class StreamTableViewController;
 
 @interface SearchViewController ()
+
 - (void)configureView;
+
 @end
 
 @implementation SearchViewController
 
 @synthesize account = _account;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
+@synthesize searchBar = _searchBar;
 
 #pragma mark - Managing the detail item
 
@@ -32,10 +37,6 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-
-    if (self.account) {
-        self.detailDescriptionLabel.text = [self.account description];
-    }
 }
 
 - (void)viewDidLoad
@@ -43,13 +44,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    [self.searchBar becomeFirstResponder];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    self.detailDescriptionLabel = nil;
+    self.searchBar = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -65,7 +67,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showStream"]) {
-        [[segue destinationViewController] setStream:nil];
+        NSArray *keywords = [self.searchBar.text componentsSeparatedByString:@" "];
+        FilteredTwitterStream *stream = [[[FilteredTwitterStream alloc] initWithKeywords:keywords 
+                                                                                 account:self.account
+                                                                                delegate:[segue destinationViewController]] autorelease];
+        
+        id destinationViewController = [segue destinationViewController];
+        if ([destinationViewController respondsToSelector:@selector(setStream:)]) {
+            [destinationViewController performSelector:@selector(setStream:) withObject:stream];
+        }
     }
 }
 

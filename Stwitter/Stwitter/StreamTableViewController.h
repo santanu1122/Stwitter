@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FilteredTwitterStream.h"
 
 @interface StreamTableViewController : UITableViewController
 
-@property (strong, nonatomic) id stream;
+@property (strong, nonatomic) FilteredTwitterStream *stream;
 
-- (void)setStream:(id)newStream;
+- (void)setStream:(FilteredTwitterStream *)newStream;
 
 @end

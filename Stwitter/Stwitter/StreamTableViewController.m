@@ -10,20 +10,19 @@
 
 @interface StreamTableViewController ()
 
+@property (nonatomic, retain) NSMutableArray* tweets;
+
+- (void)streamReceivedMessage:(TwitterStream *)stream json:(id)json;
+- (void)streamReceivedMessageJsonError:(TwitterStream *)stream errorMessage:(NSString *)errorMessage;
+- (void)streamDidTimeout:(TwitterStream *)stream;
+- (void)streamDidFailConnection:(TwitterStream *)stream;
+
 @end
 
 @implementation StreamTableViewController
 
 @synthesize stream = _stream;
-
-//- (id)initWithStyle:(UITableViewStyle)style
-//{
-//    self = [super initWithStyle:style];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
+@synthesize tweets = _tweets;
 
 - (void)setStream:(id)newStream
 {
@@ -37,8 +36,8 @@
 - (void)configureView
 {
     // Start the stream request.
-    
-    //[self.stream start];
+    self.tweets = [NSMutableArray array];
+    [self.stream start];
 }
 
 - (void)viewDidLoad
@@ -50,8 +49,15 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.title = @"A custom title";
+    self.navigationItem.title = self.stream.keywordString;
 
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.stream stop];
 }
 
 - (void)viewDidUnload
@@ -59,6 +65,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    [self.stream stop];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -68,18 +75,11 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.tweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,62 +87,48 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    if (!cell) {
+        // Subtitle cell, with a bit of a tweak
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+    }
+    NSDictionary *tweet = [self.tweets objectAtIndex:indexPath.row];
     // Configure the cell...
+    cell.textLabel.text = [tweet objectForKey:@"text"];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)streamReceivedMessage:(TwitterStream *)stream json:(id)json
+{
+    [self.tweets insertObject:json atIndex:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)streamReceivedMessageJsonError:(TwitterStream *)stream errorMessage:(NSString *)errorMessage
+{
+    NSLog(@"JSON error");
+}
+
+- (void)streamDidTimeout:(TwitterStream *)stream
+{
+    NSLog(@"Stream timeout");
+}
+
+- (void)streamDidFailConnection:(TwitterStream *)stream
+{
+    NSLog(@"Stream fail connection");
+    
+    // Make an attempt to re-connect after a short delay
+    [self.stream performSelector:@selector(start) withObject:nil afterDelay:10];
 }
 
 @end

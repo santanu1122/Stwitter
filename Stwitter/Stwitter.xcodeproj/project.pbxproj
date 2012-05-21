@@ -24,6 +24,8 @@
 		490619921566ED630088D940 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619911566ED630088D940 /* Twitter.framework */; };
 		490619941566EECE0088D940 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619931566EECE0088D940 /* Accounts.framework */; };
 		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
+		49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7121569AADA009AAA16 /* TwitterStream.m */; };
+		49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,10 @@
 		490619931566EECE0088D940 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewController.h; sourceTree = "<group>"; };
 		49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewController.m; sourceTree = "<group>"; };
+		49E7F7111569AADA009AAA16 /* TwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterStream.h; path = Stwitter/TwitterStream/TwitterStream.h; sourceTree = "<group>"; };
+		49E7F7121569AADA009AAA16 /* TwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterStream.m; path = Stwitter/TwitterStream/TwitterStream.m; sourceTree = "<group>"; };
+		49E7F7181569BE38009AAA16 /* FilteredTwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilteredTwitterStream.h; path = Stwitter/TwitterStream/FilteredTwitterStream.h; sourceTree = "<group>"; };
+		49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilteredTwitterStream.m; path = Stwitter/TwitterStream/FilteredTwitterStream.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,10 @@
 		49E7F7101569A94C009AAA16 /* TwitterStream */ = {
 			isa = PBXGroup;
 			children = (
+				49E7F7111569AADA009AAA16 /* TwitterStream.h */,
+				49E7F7121569AADA009AAA16 /* TwitterStream.m */,
+				49E7F7181569BE38009AAA16 /* FilteredTwitterStream.h */,
+				49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */,
 			);
 			name = TwitterStream;
 			path = ..;
@@ -290,6 +300,8 @@
 				490619701566E7D30088D940 /* AccountViewController.m in Sources */,
 				490619731566E7D30088D940 /* SearchViewController.m in Sources */,
 				49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */,
+				49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */,
+				49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
