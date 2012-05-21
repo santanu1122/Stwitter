@@ -10,6 +10,8 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#define MAX_TWEET_LOAD_LIMIT 200
+
 @interface StreamTableViewController ()
 
 @property (nonatomic, retain) NSMutableArray* tweets;
@@ -104,7 +106,7 @@
     NSDictionary *user = [tweet objectForKey:@"user"];
     cell.textLabel.text = [user objectForKey:@"screen_name"];
     cell.detailTextLabel.text = [tweet objectForKey:@"text"];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[user objectForKey:@"profile_image_url"]]];
+    //[cell.imageView setImageWithURL:[NSURL URLWithString:[user objectForKey:@"profile_image_url"]]];
     return cell;
 }
 
@@ -126,6 +128,12 @@
     [self.tweets insertObject:json atIndex:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]]
                           withRowAnimation:UITableViewRowAnimationNone];
+    
+    if ([self.tweets count] > MAX_TWEET_LOAD_LIMIT) {
+        [self.tweets removeObjectAtIndex:MAX_TWEET_LOAD_LIMIT];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:MAX_TWEET_LOAD_LIMIT inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 - (void)streamReceivedMessageJsonError:(TwitterStream *)stream errorMessage:(NSString *)errorMessage

@@ -99,7 +99,6 @@
     NSError *jsonParsingError = nil;
     id json = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&jsonParsingError];
     
-    
     // Alert the delegate
     if (json) { 
         if (self.delegate && [self.delegate respondsToSelector:@selector(streamReceivedMessage:json:)]) {
@@ -159,6 +158,7 @@
             [self resetKeepAliveTimeout];
         }
     }
+    response = nil;
 }
 
 // We need to pass any connection errors onto our delegate for handling
