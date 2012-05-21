@@ -26,6 +26,9 @@
 		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
 		49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7121569AADA009AAA16 /* TwitterStream.m */; };
 		49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */; };
+		49E7F733156AD544009AAA16 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F732156AD544009AAA16 /* MapKit.framework */; };
+		49E7F735156AD54A009AAA16 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F734156AD54A009AAA16 /* ImageIO.framework */; };
+		49E7F75B156ADC26009AAA16 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F758156ADC1D009AAA16 /* libSDWebImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 490619541566E7D30088D940;
 			remoteInfo = Stwitter;
+		};
+		49E7F757156ADC1D009AAA16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53922D6F148C55820056699D;
+			remoteInfo = SDWebImage;
+		};
+		49E7F759156ADC1D009AAA16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53761325155AD0D5005750A4;
+			remoteInfo = "SDWebImage ARC";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -68,6 +85,9 @@
 		49E7F7121569AADA009AAA16 /* TwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterStream.m; path = Stwitter/TwitterStream/TwitterStream.m; sourceTree = "<group>"; };
 		49E7F7181569BE38009AAA16 /* FilteredTwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilteredTwitterStream.h; path = Stwitter/TwitterStream/FilteredTwitterStream.h; sourceTree = "<group>"; };
 		49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilteredTwitterStream.m; path = Stwitter/TwitterStream/FilteredTwitterStream.m; sourceTree = "<group>"; };
+		49E7F732156AD544009AAA16 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		49E7F734156AD54A009AAA16 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = ../../SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E7F75B156ADC26009AAA16 /* libSDWebImage.a in Frameworks */,
+				49E7F735156AD54A009AAA16 /* ImageIO.framework in Frameworks */,
+				49E7F733156AD544009AAA16 /* MapKit.framework in Frameworks */,
 				490619941566EECE0088D940 /* Accounts.framework in Frameworks */,
 				490619921566ED630088D940 /* Twitter.framework in Frameworks */,
 				4906195A1566E7D30088D940 /* UIKit.framework in Frameworks */,
@@ -99,6 +122,7 @@
 		4906194A1566E7D30088D940 = {
 			isa = PBXGroup;
 			children = (
+				49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */,
 				4906195F1566E7D30088D940 /* Stwitter */,
 				490619801566E7D40088D940 /* StwitterTests */,
 				490619581566E7D30088D940 /* Frameworks */,
@@ -118,6 +142,8 @@
 		490619581566E7D30088D940 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49E7F734156AD54A009AAA16 /* ImageIO.framework */,
+				49E7F732156AD544009AAA16 /* MapKit.framework */,
 				490619931566EECE0088D940 /* Accounts.framework */,
 				490619911566ED630088D940 /* Twitter.framework */,
 				490619591566E7D30088D940 /* UIKit.framework */,
@@ -188,6 +214,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		49E7F750156ADC1C009AAA16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49E7F758156ADC1D009AAA16 /* libSDWebImage.a */,
+				49E7F75A156ADC1D009AAA16 /* libSDWebImageARC.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,6 +281,12 @@
 			mainGroup = 4906194A1566E7D30088D940;
 			productRefGroup = 490619561566E7D30088D940 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 49E7F750156ADC1C009AAA16 /* Products */;
+					ProjectRef = 49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				490619541566E7D30088D940 /* Stwitter */,
@@ -253,6 +294,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		49E7F758156ADC1D009AAA16 /* libSDWebImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImage.a;
+			remoteRef = 49E7F757156ADC1D009AAA16 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		49E7F75A156ADC1D009AAA16 /* libSDWebImageARC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImageARC.a;
+			remoteRef = 49E7F759156ADC1D009AAA16 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		490619531566E7D30088D940 /* Resources */ = {
@@ -401,7 +459,15 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stwitter/Stwitter-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
+				);
 				INFOPLIST_FILE = "Stwitter/Stwitter-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -412,7 +478,15 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stwitter/Stwitter-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
+				);
 				INFOPLIST_FILE = "Stwitter/Stwitter-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

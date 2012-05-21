@@ -8,6 +8,8 @@
 
 #import "StreamTableViewController.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
 @interface StreamTableViewController ()
 
 @property (nonatomic, retain) NSMutableArray* tweets;
@@ -91,16 +93,28 @@
     if (!cell) {
         // Subtitle cell, with a bit of a tweak
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+        cell.detailTextLabel.numberOfLines = 0;
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
     }
+
+
     NSDictionary *tweet = [self.tweets objectAtIndex:indexPath.row];
     // Configure the cell...
-    cell.textLabel.text = [tweet objectForKey:@"text"];
-    
+    NSDictionary *user = [tweet objectForKey:@"user"];
+    cell.textLabel.text = [user objectForKey:@"screen_name"];
+    cell.detailTextLabel.text = [tweet objectForKey:@"text"];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:[user objectForKey:@"profile_image_url"]]];
     return cell;
 }
 
-
-#pragma mark - Table view delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+        // Calculate how much room we need for the tweet
+        NSDictionary* tweet = [self.tweets objectAtIndex:indexPath.row];
+        return [[tweet objectForKey:@"text"] sizeWithFont:[UIFont systemFontOfSize:15]
+                                        constrainedToSize:CGSizeMake(tableView.bounds.size.width - 20, INT_MAX)
+                                            lineBreakMode:UILineBreakModeCharacterWrap].height + 40;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
