@@ -90,6 +90,7 @@
 {
     [self.connection cancel];
     self.connection = nil;
+    [self.keepAliveTimer invalidate];
 }
 
 - (void)receivedFullMessage:(NSString *)message
@@ -172,7 +173,7 @@
 - (void)resetKeepAliveTimeout 
 {
     [self.keepAliveTimer invalidate];
-    self.keepAliveTimer = [NSTimer scheduledTimerWithTimeInterval:40 
+    self.keepAliveTimer = [NSTimer scheduledTimerWithTimeInterval:90 
                                                            target:self 
                                                          selector:@selector(onKeepAliveTimeout)
                                                          userInfo:nil

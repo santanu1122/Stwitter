@@ -99,7 +99,6 @@
 		4906194A1566E7D30088D940 = {
 			isa = PBXGroup;
 			children = (
-				490619931566EECE0088D940 /* Accounts.framework */,
 				4906195F1566E7D30088D940 /* Stwitter */,
 				490619801566E7D40088D940 /* StwitterTests */,
 				490619581566E7D30088D940 /* Frameworks */,
@@ -119,6 +118,7 @@
 		490619581566E7D30088D940 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				490619931566EECE0088D940 /* Accounts.framework */,
 				490619911566ED630088D940 /* Twitter.framework */,
 				490619591566E7D30088D940 /* UIKit.framework */,
 				4906195B1566E7D30088D940 /* Foundation.framework */,
