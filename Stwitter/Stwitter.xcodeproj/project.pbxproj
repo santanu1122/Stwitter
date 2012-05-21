@@ -28,7 +28,7 @@
 		49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */; };
 		49E7F733156AD544009AAA16 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F732156AD544009AAA16 /* MapKit.framework */; };
 		49E7F735156AD54A009AAA16 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F734156AD54A009AAA16 /* ImageIO.framework */; };
-		49E7F75B156ADC26009AAA16 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F758156ADC1D009AAA16 /* libSDWebImage.a */; };
+		49E7F768156ADE12009AAA16 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F765156ADE0C009AAA16 /* libSDWebImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,16 +39,16 @@
 			remoteGlobalIDString = 490619541566E7D30088D940;
 			remoteInfo = Stwitter;
 		};
-		49E7F757156ADC1D009AAA16 /* PBXContainerItemProxy */ = {
+		49E7F764156ADE0C009AAA16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */;
+			containerPortal = 49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 53922D6F148C55820056699D;
 			remoteInfo = SDWebImage;
 		};
-		49E7F759156ADC1D009AAA16 /* PBXContainerItemProxy */ = {
+		49E7F766156ADE0C009AAA16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */;
+			containerPortal = 49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 53761325155AD0D5005750A4;
 			remoteInfo = "SDWebImage ARC";
@@ -87,7 +87,7 @@
 		49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilteredTwitterStream.m; path = Stwitter/TwitterStream/FilteredTwitterStream.m; sourceTree = "<group>"; };
 		49E7F732156AD544009AAA16 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		49E7F734156AD54A009AAA16 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = ../../SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
+		49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = ../SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49E7F75B156ADC26009AAA16 /* libSDWebImage.a in Frameworks */,
+				49E7F768156ADE12009AAA16 /* libSDWebImage.a in Frameworks */,
 				49E7F735156AD54A009AAA16 /* ImageIO.framework in Frameworks */,
 				49E7F733156AD544009AAA16 /* MapKit.framework in Frameworks */,
 				490619941566EECE0088D940 /* Accounts.framework in Frameworks */,
@@ -122,7 +122,7 @@
 		4906194A1566E7D30088D940 = {
 			isa = PBXGroup;
 			children = (
-				49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */,
+				49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */,
 				4906195F1566E7D30088D940 /* Stwitter */,
 				490619801566E7D40088D940 /* StwitterTests */,
 				490619581566E7D30088D940 /* Frameworks */,
@@ -214,11 +214,11 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		49E7F750156ADC1C009AAA16 /* Products */ = {
+		49E7F75D156ADE0B009AAA16 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49E7F758156ADC1D009AAA16 /* libSDWebImage.a */,
-				49E7F75A156ADC1D009AAA16 /* libSDWebImageARC.a */,
+				49E7F765156ADE0C009AAA16 /* libSDWebImage.a */,
+				49E7F767156ADE0C009AAA16 /* libSDWebImageARC.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,8 +283,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 49E7F750156ADC1C009AAA16 /* Products */;
-					ProjectRef = 49E7F74F156ADC1C009AAA16 /* SDWebImage.xcodeproj */;
+					ProductGroup = 49E7F75D156ADE0B009AAA16 /* Products */;
+					ProjectRef = 49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -296,18 +296,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		49E7F758156ADC1D009AAA16 /* libSDWebImage.a */ = {
+		49E7F765156ADE0C009AAA16 /* libSDWebImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSDWebImage.a;
-			remoteRef = 49E7F757156ADC1D009AAA16 /* PBXContainerItemProxy */;
+			remoteRef = 49E7F764156ADE0C009AAA16 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		49E7F75A156ADC1D009AAA16 /* libSDWebImageARC.a */ = {
+		49E7F767156ADE0C009AAA16 /* libSDWebImageARC.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSDWebImageARC.a;
-			remoteRef = 49E7F759156ADC1D009AAA16 /* PBXContainerItemProxy */;
+			remoteRef = 49E7F766156ADE0C009AAA16 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
