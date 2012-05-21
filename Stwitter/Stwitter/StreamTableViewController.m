@@ -91,15 +91,6 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (!cell) {
-        // Subtitle cell, with a bit of a tweak
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-        cell.detailTextLabel.numberOfLines = 0;
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
-    }
-
 
     NSDictionary *tweet = [self.tweets objectAtIndex:indexPath.row];
     // Configure the cell...
