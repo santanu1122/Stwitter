@@ -23,6 +23,9 @@
 		490619881566E7D40088D940 /* StwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 490619871566E7D40088D940 /* StwitterTests.m */; };
 		490619921566ED630088D940 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619911566ED630088D940 /* Twitter.framework */; };
 		490619941566EECE0088D940 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 490619931566EECE0088D940 /* Accounts.framework */; };
+		49BB55CB156B18B600E1285D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55CA156B18B600E1285D /* Default@2x.png */; };
+		49BB55CD156B18BF00E1285D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55CC156B18BF00E1285D /* Default.png */; };
+		49BB55D6156B25C300E1285D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55D5156B25C300E1285D /* Icon.png */; };
 		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
 		49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7121569AADA009AAA16 /* TwitterStream.m */; };
 		49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */; };
@@ -79,6 +82,9 @@
 		490619871566E7D40088D940 /* StwitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StwitterTests.m; sourceTree = "<group>"; };
 		490619911566ED630088D940 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		490619931566EECE0088D940 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		49BB55CA156B18B600E1285D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		49BB55CC156B18BF00E1285D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		49BB55D5156B25C300E1285D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewController.h; sourceTree = "<group>"; };
 		49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewController.m; sourceTree = "<group>"; };
 		49E7F7111569AADA009AAA16 /* TwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterStream.h; path = Stwitter/TwitterStream/TwitterStream.h; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */,
+				49BB55CE156B18D600E1285D /* Resources */,
 				4906195F1566E7D30088D940 /* Stwitter */,
 				490619801566E7D40088D940 /* StwitterTests */,
 				490619581566E7D30088D940 /* Frameworks */,
@@ -200,6 +207,16 @@
 				490619831566E7D40088D940 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49BB55CE156B18D600E1285D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				49BB55D5156B25C300E1285D /* Icon.png */,
+				49BB55CC156B18BF00E1285D /* Default.png */,
+				49BB55CA156B18B600E1285D /* Default@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		49E7F7101569A94C009AAA16 /* TwitterStream */ = {
@@ -319,6 +336,9 @@
 			files = (
 				490619641566E7D30088D940 /* InfoPlist.strings in Resources */,
 				4906196D1566E7D30088D940 /* MainStoryboard.storyboard in Resources */,
+				49BB55CB156B18B600E1285D /* Default@2x.png in Resources */,
+				49BB55CD156B18BF00E1285D /* Default.png in Resources */,
+				49BB55D6156B25C300E1285D /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
