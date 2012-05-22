@@ -79,9 +79,6 @@
     // Start that timer before starting connection in case of connection start timeout.
     [self resetKeepAliveTimeout];
     
-    // Send request and start retreiving data from twitter server
-    [self.connection start];
-    
     [request release];
 }
 
