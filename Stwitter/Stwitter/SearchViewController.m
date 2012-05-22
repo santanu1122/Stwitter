@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "FilteredTwitterStream.h"
+#import "Trend.h"
 
 @class StreamTableViewController;
 
@@ -71,20 +72,50 @@
     NSString *trends = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://api.twitter.com/1/trends/daily.json"]
                                                 encoding:NSStringEncodingConversionAllowLossy
                                                    error:nil];
-    NSDictionary *trendsDict = [NSJSONSerialization JSONObjectWithData:[trends dataUsingEncoding:NSUTF8StringEncoding] 
-                                                               options:0
-                                                                 error:nil];
-    NSDictionary *allTrends = [trendsDict objectForKey:@"trends"];
-    NSArray *theTrends = [allTrends objectForKey:[[allTrends allKeys] objectAtIndex:0]];
     
-//    NSLog(@"%@", theTrends);
-    self.trends = [theTrends mutableCopy];
+    NSDictionary *trendsResponseDict = [NSJSONSerialization JSONObjectWithData:[trends dataUsingEncoding:NSUTF8StringEncoding] 
+                                                                       options:0
+                                                                         error:nil];
+    NSDictionary *allTrends = [trendsResponseDict objectForKey:@"trends"];
+    NSArray *currentTrends = [allTrends objectForKey:[[allTrends allKeys] objectAtIndex:0]];
+    
+    for (NSDictionary *trend in currentTrends) {
+        [self.trends addObject:[Trend fromJson:trend]];
+    }
+
     [self.tableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.trends count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Top Trends";
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    Trend *trend = [self.trends objectAtIndex:indexPath.row];
+    cell.textLabel.text = trend.name;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    Trend *trend = [self.trends objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"showStream" sender:[NSArray arrayWithObject:trend.query]];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -104,33 +135,6 @@
             [destinationViewController performSelector:@selector(setStream:) withObject:stream];
         }
     }
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.trends count];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Top Trends";
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    NSDictionary *trend = [self.trends objectAtIndex:indexPath.row];
-    cell.textLabel.text = [trend objectForKey:@"name"];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *trend = [self.trends objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"showStream" sender:[NSArray arrayWithObject:[trend objectForKey:@"query"]]];
 }
 
 @end
