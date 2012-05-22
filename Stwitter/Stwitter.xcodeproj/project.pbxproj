@@ -28,6 +28,7 @@
 		49BB55D6156B25C300E1285D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55D5156B25C300E1285D /* Icon.png */; };
 		49BB55E1156BF8D700E1285D /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55E0156BF8D700E1285D /* Tweet.m */; };
 		49BB55E4156BFF4600E1285D /* Trend.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55E3156BFF4600E1285D /* Trend.m */; };
+		49BB55E7156C03C300E1285D /* TrendsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55E6156C03C300E1285D /* TrendsFetcher.m */; };
 		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
 		49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7121569AADA009AAA16 /* TwitterStream.m */; };
 		49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */; };
@@ -91,6 +92,8 @@
 		49BB55E0156BF8D700E1285D /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		49BB55E2156BFF4600E1285D /* Trend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trend.h; sourceTree = "<group>"; };
 		49BB55E3156BFF4600E1285D /* Trend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trend.m; sourceTree = "<group>"; };
+		49BB55E5156C03C300E1285D /* TrendsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrendsFetcher.h; path = Stwitter/TwitterStream/TrendsFetcher.h; sourceTree = "<group>"; };
+		49BB55E6156C03C300E1285D /* TrendsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrendsFetcher.m; path = Stwitter/TwitterStream/TrendsFetcher.m; sourceTree = "<group>"; };
 		49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewController.h; sourceTree = "<group>"; };
 		49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewController.m; sourceTree = "<group>"; };
 		49E7F7111569AADA009AAA16 /* TwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterStream.h; path = Stwitter/TwitterStream/TwitterStream.h; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				49E7F7121569AADA009AAA16 /* TwitterStream.m */,
 				49E7F7181569BE38009AAA16 /* FilteredTwitterStream.h */,
 				49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */,
+				49BB55E5156C03C300E1285D /* TrendsFetcher.h */,
+				49BB55E6156C03C300E1285D /* TrendsFetcher.m */,
 			);
 			name = TwitterStream;
 			path = ..;
@@ -408,6 +413,7 @@
 				49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */,
 				49BB55E1156BF8D700E1285D /* Tweet.m in Sources */,
 				49BB55E4156BFF4600E1285D /* Trend.m in Sources */,
+				49BB55E7156C03C300E1285D /* TrendsFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

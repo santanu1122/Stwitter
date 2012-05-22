@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Accounts/Accounts.h>
+#import "TrendsFetcher.h"
 
-@interface SearchViewController : UIViewController <UISearchBarDelegate>
+@class ACAccount;
+
+@interface SearchViewController : UIViewController <UITableViewDelegate, UISearchBarDelegate, TrendsFetcherDelegate>
 
 @property (strong, nonatomic) ACAccount* account;
 

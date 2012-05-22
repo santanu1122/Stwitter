@@ -43,8 +43,7 @@
 - (void)configureView
 {
     self.trends = [NSMutableArray array];
-    // Load trends from twitter in a background thread
-    [NSThread detachNewThreadSelector:@selector(loadTrends) toTarget:self withObject:self];
+    [self loadTrends];
 }
 
 - (void)viewDidLoad
@@ -64,26 +63,21 @@
 
 - (void)loadTrends
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];    
+    TrendsFetcher *trendsFetcher = [[[TrendsFetcher alloc] initWithTwitterAccount:self.account
+                                                                         delegate:self] autorelease];
     
-    // Update the user interface for the detail item.
-    NSString *trends = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://api.twitter.com/1/trends/daily.json"]
-                                                encoding:NSStringEncodingConversionAllowLossy
-                                                   error:nil];
-    
-    NSDictionary *trendsResponseDict = [NSJSONSerialization JSONObjectWithData:[trends dataUsingEncoding:NSUTF8StringEncoding] 
-                                                                       options:0
-                                                                         error:nil];
-    NSDictionary *allTrends = [trendsResponseDict objectForKey:@"trends"];
-    NSArray *currentTrends = [allTrends objectForKey:[[allTrends allKeys] objectAtIndex:0]];
-    
-    for (NSDictionary *trend in currentTrends) {
-        [self.trends addObject:[Trend fromJson:trend]];
-    }
+    [trendsFetcher fetch];
+}
 
+- (void)fetcherReceivedTrends:(TrendsFetcher *)fetcher trends:(NSArray *)trends;
+{
+    self.trends = [trends copy];
     [self.tableView reloadData];
+}
+
+- (void)fetcherDidFailConnection:(TrendsFetcher *)fetcher
+{
+    NSLog(@"Trend fetcher failed connection");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
