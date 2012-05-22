@@ -28,10 +28,10 @@
 		49BB55D6156B25C300E1285D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55D5156B25C300E1285D /* Icon.png */; };
 		49BB55E1156BF8D700E1285D /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55E0156BF8D700E1285D /* Tweet.m */; };
 		49BB55E4156BFF4600E1285D /* Trend.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55E3156BFF4600E1285D /* Trend.m */; };
-		49BB55E7156C03C300E1285D /* TrendsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55E6156C03C300E1285D /* TrendsFetcher.m */; };
+		49BB55EF156C16F000E1285D /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55EA156C16F000E1285D /* FilteredTwitterStream.m */; };
+		49BB55F0156C16F000E1285D /* TrendsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55EC156C16F000E1285D /* TrendsFetcher.m */; };
+		49BB55F1156C16F000E1285D /* TwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55EE156C16F000E1285D /* TwitterStream.m */; };
 		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
-		49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7121569AADA009AAA16 /* TwitterStream.m */; };
-		49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */; };
 		49E7F733156AD544009AAA16 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F732156AD544009AAA16 /* MapKit.framework */; };
 		49E7F735156AD54A009AAA16 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F734156AD54A009AAA16 /* ImageIO.framework */; };
 		49E7F768156ADE12009AAA16 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F765156ADE0C009AAA16 /* libSDWebImage.a */; };
@@ -92,14 +92,14 @@
 		49BB55E0156BF8D700E1285D /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		49BB55E2156BFF4600E1285D /* Trend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trend.h; sourceTree = "<group>"; };
 		49BB55E3156BFF4600E1285D /* Trend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trend.m; sourceTree = "<group>"; };
-		49BB55E5156C03C300E1285D /* TrendsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrendsFetcher.h; path = Stwitter/TwitterStream/TrendsFetcher.h; sourceTree = "<group>"; };
-		49BB55E6156C03C300E1285D /* TrendsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrendsFetcher.m; path = Stwitter/TwitterStream/TrendsFetcher.m; sourceTree = "<group>"; };
+		49BB55E9156C16F000E1285D /* FilteredTwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteredTwitterStream.h; sourceTree = "<group>"; };
+		49BB55EA156C16F000E1285D /* FilteredTwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteredTwitterStream.m; sourceTree = "<group>"; };
+		49BB55EB156C16F000E1285D /* TrendsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendsFetcher.h; sourceTree = "<group>"; };
+		49BB55EC156C16F000E1285D /* TrendsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendsFetcher.m; sourceTree = "<group>"; };
+		49BB55ED156C16F000E1285D /* TwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterStream.h; sourceTree = "<group>"; };
+		49BB55EE156C16F000E1285D /* TwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterStream.m; sourceTree = "<group>"; };
 		49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewController.h; sourceTree = "<group>"; };
 		49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewController.m; sourceTree = "<group>"; };
-		49E7F7111569AADA009AAA16 /* TwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterStream.h; path = Stwitter/TwitterStream/TwitterStream.h; sourceTree = "<group>"; };
-		49E7F7121569AADA009AAA16 /* TwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterStream.m; path = Stwitter/TwitterStream/TwitterStream.m; sourceTree = "<group>"; };
-		49E7F7181569BE38009AAA16 /* FilteredTwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilteredTwitterStream.h; path = Stwitter/TwitterStream/FilteredTwitterStream.h; sourceTree = "<group>"; };
-		49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilteredTwitterStream.m; path = Stwitter/TwitterStream/FilteredTwitterStream.m; sourceTree = "<group>"; };
 		49E7F732156AD544009AAA16 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		49E7F734156AD54A009AAA16 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = ../SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
@@ -173,9 +173,9 @@
 		4906195F1566E7D30088D940 /* Stwitter */ = {
 			isa = PBXGroup;
 			children = (
+				49BB55E8156C16F000E1285D /* Network Facades */,
 				49BB55DE156BF86E00E1285D /* Controllers */,
 				49BB55DD156BF86200E1285D /* Models */,
-				49E7F7101569A94C009AAA16 /* TwitterStream */,
 				490619681566E7D30088D940 /* AppDelegate.h */,
 				490619691566E7D30088D940 /* AppDelegate.m */,
 				4906196B1566E7D30088D940 /* MainStoryboard.storyboard */,
@@ -248,18 +248,17 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		49E7F7101569A94C009AAA16 /* TwitterStream */ = {
+		49BB55E8156C16F000E1285D /* Network Facades */ = {
 			isa = PBXGroup;
 			children = (
-				49E7F7111569AADA009AAA16 /* TwitterStream.h */,
-				49E7F7121569AADA009AAA16 /* TwitterStream.m */,
-				49E7F7181569BE38009AAA16 /* FilteredTwitterStream.h */,
-				49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */,
-				49BB55E5156C03C300E1285D /* TrendsFetcher.h */,
-				49BB55E6156C03C300E1285D /* TrendsFetcher.m */,
+				49BB55E9156C16F000E1285D /* FilteredTwitterStream.h */,
+				49BB55EA156C16F000E1285D /* FilteredTwitterStream.m */,
+				49BB55EB156C16F000E1285D /* TrendsFetcher.h */,
+				49BB55EC156C16F000E1285D /* TrendsFetcher.m */,
+				49BB55ED156C16F000E1285D /* TwitterStream.h */,
+				49BB55EE156C16F000E1285D /* TwitterStream.m */,
 			);
-			name = TwitterStream;
-			path = ..;
+			path = "Network Facades";
 			sourceTree = "<group>";
 		};
 		49E7F75D156ADE0B009AAA16 /* Products */ = {
@@ -409,11 +408,11 @@
 				490619701566E7D30088D940 /* AccountViewController.m in Sources */,
 				490619731566E7D30088D940 /* SearchViewController.m in Sources */,
 				49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */,
-				49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */,
-				49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */,
 				49BB55E1156BF8D700E1285D /* Tweet.m in Sources */,
 				49BB55E4156BFF4600E1285D /* Trend.m in Sources */,
-				49BB55E7156C03C300E1285D /* TrendsFetcher.m in Sources */,
+				49BB55EF156C16F000E1285D /* FilteredTwitterStream.m in Sources */,
+				49BB55F0156C16F000E1285D /* TrendsFetcher.m in Sources */,
+				49BB55F1156C16F000E1285D /* TwitterStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
