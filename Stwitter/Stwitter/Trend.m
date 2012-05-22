@@ -42,7 +42,9 @@
 
 - (NSString *)query;
 {
-    return [data objectForKey:@"query"];
+    return [[data objectForKey:@"query"] stringByReplacingOccurrencesOfString:@"\"" 
+                                                                   withString:@""];
+                
 }
 
 @end
