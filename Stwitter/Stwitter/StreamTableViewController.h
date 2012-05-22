@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FilteredTwitterStream.h"
 
-@interface StreamTableViewController : UITableViewController
+@interface StreamTableViewController : UITableViewController <TwitterStreamDelegate>
 
 @property (strong, nonatomic) FilteredTwitterStream *stream;
 
