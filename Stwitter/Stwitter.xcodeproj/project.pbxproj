@@ -26,6 +26,7 @@
 		49BB55CB156B18B600E1285D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55CA156B18B600E1285D /* Default@2x.png */; };
 		49BB55CD156B18BF00E1285D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55CC156B18BF00E1285D /* Default.png */; };
 		49BB55D6156B25C300E1285D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BB55D5156B25C300E1285D /* Icon.png */; };
+		49BB55E1156BF8D700E1285D /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB55E0156BF8D700E1285D /* Tweet.m */; };
 		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
 		49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7121569AADA009AAA16 /* TwitterStream.m */; };
 		49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F7191569BE38009AAA16 /* FilteredTwitterStream.m */; };
@@ -85,6 +86,8 @@
 		49BB55CA156B18B600E1285D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		49BB55CC156B18BF00E1285D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		49BB55D5156B25C300E1285D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		49BB55DF156BF8D700E1285D /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		49BB55E0156BF8D700E1285D /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewController.h; sourceTree = "<group>"; };
 		49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewController.m; sourceTree = "<group>"; };
 		49E7F7111569AADA009AAA16 /* TwitterStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterStream.h; path = Stwitter/TwitterStream/TwitterStream.h; sourceTree = "<group>"; };
@@ -129,8 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				49E7F75C156ADE0B009AAA16 /* SDWebImage.xcodeproj */,
-				49BB55CE156B18D600E1285D /* Resources */,
 				4906195F1566E7D30088D940 /* Stwitter */,
+				49BB55CE156B18D600E1285D /* Resources */,
 				490619801566E7D40088D940 /* StwitterTests */,
 				490619581566E7D30088D940 /* Frameworks */,
 				490619561566E7D30088D940 /* Products */,
@@ -164,17 +167,13 @@
 		4906195F1566E7D30088D940 /* Stwitter */ = {
 			isa = PBXGroup;
 			children = (
+				49BB55DE156BF86E00E1285D /* Controllers */,
+				49BB55DD156BF86200E1285D /* Models */,
 				49E7F7101569A94C009AAA16 /* TwitterStream */,
 				490619681566E7D30088D940 /* AppDelegate.h */,
 				490619691566E7D30088D940 /* AppDelegate.m */,
 				4906196B1566E7D30088D940 /* MainStoryboard.storyboard */,
-				4906196E1566E7D30088D940 /* AccountViewController.h */,
-				4906196F1566E7D30088D940 /* AccountViewController.m */,
-				490619711566E7D30088D940 /* SearchViewController.h */,
-				490619721566E7D30088D940 /* SearchViewController.m */,
 				490619601566E7D30088D940 /* Supporting Files */,
-				49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */,
-				49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */,
 			);
 			path = Stwitter;
 			sourceTree = "<group>";
@@ -217,6 +216,28 @@
 				49BB55CA156B18B600E1285D /* Default@2x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		49BB55DD156BF86200E1285D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49BB55DF156BF8D700E1285D /* Tweet.h */,
+				49BB55E0156BF8D700E1285D /* Tweet.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		49BB55DE156BF86E00E1285D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4906196E1566E7D30088D940 /* AccountViewController.h */,
+				4906196F1566E7D30088D940 /* AccountViewController.m */,
+				490619711566E7D30088D940 /* SearchViewController.h */,
+				490619721566E7D30088D940 /* SearchViewController.m */,
+				49E7F70D1569A17C009AAA16 /* StreamTableViewController.h */,
+				49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		49E7F7101569A94C009AAA16 /* TwitterStream */ = {
@@ -380,6 +401,7 @@
 				49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */,
 				49E7F7131569AADA009AAA16 /* TwitterStream.m in Sources */,
 				49E7F71A1569BE38009AAA16 /* FilteredTwitterStream.m in Sources */,
+				49BB55E1156BF8D700E1285D /* Tweet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

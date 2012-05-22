@@ -7,6 +7,7 @@
 //
 
 #import "StreamTableViewController.h"
+#import "Tweet.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -71,6 +72,7 @@
     // e.g. self.myOutlet = nil;
     [self.stream stop];
     self.stream = nil;
+    self.tweets = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -92,19 +94,17 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    NSDictionary *tweet = [self.tweets objectAtIndex:indexPath.row];
-    // Configure the cell...
-    NSDictionary *user = [tweet objectForKey:@"user"];
-    cell.textLabel.text = [user objectForKey:@"screen_name"];
-    cell.detailTextLabel.text = [tweet objectForKey:@"text"];
+    Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+    cell.textLabel.text = tweet.username;
+    cell.detailTextLabel.text = tweet.text;
     //[cell.imageView setImageWithURL:[NSURL URLWithString:[user objectForKey:@"profile_image_url"]]];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         // Calculate how much room we need for the tweet
-        NSDictionary* tweet = [self.tweets objectAtIndex:indexPath.row];
-        return [[tweet objectForKey:@"text"] sizeWithFont:[UIFont systemFontOfSize:15]
+        Tweet* tweet = [self.tweets objectAtIndex:indexPath.row];
+        return [tweet.text sizeWithFont:[UIFont systemFontOfSize:15]
                                         constrainedToSize:CGSizeMake(tableView.bounds.size.width - 20, INT_MAX)
                                             lineBreakMode:UILineBreakModeCharacterWrap].height + 40;
 }
@@ -116,7 +116,7 @@
 
 - (void)streamReceivedMessage:(TwitterStream *)stream json:(id)json
 {
-    [self.tweets insertObject:json atIndex:0];
+    [self.tweets insertObject:[Tweet fromJson:json] atIndex:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]]
                           withRowAnimation:UITableViewRowAnimationNone];
     
