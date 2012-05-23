@@ -15,6 +15,7 @@
 @interface SearchViewController ()
 
 @property (retain) NSMutableArray *trends;
+@property (nonatomic, retain) TrendsFetcher *trendsFetcher;
 
 - (void)loadTrends;
 - (void)configureView;
@@ -27,6 +28,7 @@
 @synthesize searchBar = _searchBar;
 @synthesize tableView = _tableView;
 @synthesize trends = _trends;
+@synthesize trendsFetcher = _trendsFetcher;
 
 #pragma mark - Managing the detail item
 
@@ -59,16 +61,14 @@
     // Release any retained subviews of the main view.
     self.searchBar = nil;
     self.tableView = nil;
-    self.trends = nil;
-    self.account = nil;
 }
 
 - (void)loadTrends
 {
-    TrendsFetcher *trendsFetcher = [[[TrendsFetcher alloc] initWithTwitterAccount:self.account
-                                                                         delegate:self] autorelease];
+    self.trendsFetcher = [[TrendsFetcher alloc] initWithTwitterAccount:self.account
+                                                              delegate:self];
     
-    [trendsFetcher fetch];
+    [self.trendsFetcher fetch];
 }
 
 - (void)fetcherReceivedTrends:(TrendsFetcher *)fetcher trends:(NSArray *)trends;
@@ -138,7 +138,7 @@
     self.searchBar = nil;
     self.tableView = nil;
     self.trends = nil;
-    self.account = nil;
+    self.trendsFetcher = nil;
     
     [super dealloc];
 }
