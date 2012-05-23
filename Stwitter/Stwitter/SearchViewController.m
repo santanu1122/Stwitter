@@ -14,7 +14,7 @@
 
 @interface SearchViewController ()
 
-@property (strong, nonatomic) NSMutableArray *trends;
+@property (retain) NSMutableArray *trends;
 
 - (void)loadTrends;
 - (void)configureView;
@@ -59,6 +59,8 @@
     // Release any retained subviews of the main view.
     self.searchBar = nil;
     self.tableView = nil;
+    self.trends = nil;
+    self.account = nil;
 }
 
 - (void)loadTrends
@@ -129,6 +131,16 @@
             [destinationViewController performSelector:@selector(setStream:) withObject:stream];
         }
     }
+}
+
+- (void)dealloc
+{
+    self.searchBar = nil;
+    self.tableView = nil;
+    self.trends = nil;
+    self.account = nil;
+    
+    [super dealloc];
 }
 
 @end

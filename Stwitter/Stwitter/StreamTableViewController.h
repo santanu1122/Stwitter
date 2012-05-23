@@ -11,7 +11,7 @@
 
 @interface StreamTableViewController : UITableViewController <TwitterStreamDelegate>
 
-@property (strong, nonatomic) FilteredTwitterStream *stream;
+@property (nonatomic, retain) FilteredTwitterStream *stream;
 
 - (void)setStream:(FilteredTwitterStream *)newStream;
 

@@ -10,7 +10,7 @@
 
 @interface Trend ()
 
-@property (strong, nonatomic) NSDictionary *data;
+@property (nonatomic, retain) NSDictionary *data;
 
 @end
 

@@ -25,4 +25,11 @@
                                  delegate:delegate];
 }
 
+- (void)dealloc
+{
+    self.keywordString = nil;
+    
+    [super dealloc];
+}
+
 @end

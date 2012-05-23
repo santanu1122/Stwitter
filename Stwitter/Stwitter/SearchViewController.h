@@ -13,10 +13,10 @@
 
 @interface SearchViewController : UIViewController <UITableViewDelegate, UISearchBarDelegate, TrendsFetcherDelegate>
 
-@property (strong, nonatomic) ACAccount* account;
+@property (nonatomic, retain) ACAccount* account;
 
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 
 @end

@@ -9,13 +9,13 @@
 #import "StreamTableViewController.h"
 #import "Tweet.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
+//#import <SDWebImage/UIImageView+WebCache.h>
 
 #define MAX_TWEET_LOAD_LIMIT 200
 
 @interface StreamTableViewController ()
 
-@property (nonatomic, retain) NSMutableArray* tweets;
+@property (retain) NSMutableArray* tweets;
 
 - (void)streamReceivedMessage:(TwitterStream *)stream json:(id)json;
 - (void)streamReceivedMessageJsonError:(TwitterStream *)stream errorMessage:(NSString *)errorMessage;
@@ -143,6 +143,14 @@
     
     // Make an attempt to re-connect after a short delay
     [self.stream performSelector:@selector(start) withObject:nil afterDelay:10];
+}
+
+- (void)dealloc
+{
+    self.stream = nil;
+    self.tweets = nil;
+    
+    [super dealloc];
 }
 
 @end

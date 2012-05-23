@@ -118,7 +118,11 @@
 
 - (void)dealloc
 {
+    [self.connection cancel];
     self.connection = nil;
+    
+    self.account = nil;
+    self.parameters = nil;
     self.receivedData = nil;
     
     [super dealloc];

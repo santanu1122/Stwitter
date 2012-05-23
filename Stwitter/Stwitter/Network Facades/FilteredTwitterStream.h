@@ -10,7 +10,7 @@
 
 @interface FilteredTwitterStream : TwitterStream
 
-@property (strong, nonatomic) NSString* keywordString;
+@property (nonatomic, retain) NSString* keywordString;
 
 - (id)initWithKeywords:(NSArray *)keywords
                account:(ACAccount *)account
