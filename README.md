@@ -1,4 +1,4 @@
-![Default.png](Graphics/Default.png "Title is optional")
+![Default.png](http://f.cl.ly/items/3f101L0R2E021X1b232C/Default.png "Splash screen")
 
 Stwitter
 ========
