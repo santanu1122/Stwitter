@@ -26,5 +26,6 @@
                     delegate:(id<TrendsFetcherDelegate>)delegate;
 
 - (void)fetch;
+- (void)cancel;
 
 @end

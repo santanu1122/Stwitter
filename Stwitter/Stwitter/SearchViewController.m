@@ -14,7 +14,7 @@
 
 @interface SearchViewController ()
 
-@property (retain) NSMutableArray *trends;
+@property (retain) NSArray *trends;
 @property (nonatomic, retain) TrendsFetcher *trendsFetcher;
 
 - (void)loadTrends;
@@ -44,7 +44,7 @@
 
 - (void)configureView
 {
-    self.trends = [NSMutableArray array];
+    self.trends = [NSArray array];
     [self loadTrends];
 }
 
@@ -61,6 +61,10 @@
     // Release any retained subviews of the main view.
     self.searchBar = nil;
     self.tableView = nil;
+    
+    [self.trendsFetcher cancel];
+    self.trendsFetcher = nil;
+    self.trends = nil;
 }
 
 - (void)loadTrends
@@ -69,11 +73,12 @@
                                                               delegate:self];
     
     [self.trendsFetcher fetch];
+    [self.trendsFetcher release];
 }
 
 - (void)fetcherReceivedTrends:(TrendsFetcher *)fetcher trends:(NSArray *)trends;
 {
-    self.trends = [trends copy];
+    self.trends = trends;
     [self.tableView reloadData];
 }
 
@@ -122,7 +127,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)keywords
 {
     if ([[segue identifier] isEqualToString:@"showStream"]) {
-        FilteredTwitterStream *stream = [[[FilteredTwitterStream alloc] initWithKeywords:[(NSArray *)keywords copy] 
+        FilteredTwitterStream *stream = [[[FilteredTwitterStream alloc] initWithKeywords:(NSArray *)keywords 
                                                                                  account:self.account
                                                                                 delegate:[segue destinationViewController]] autorelease];
         

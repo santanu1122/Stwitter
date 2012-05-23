@@ -19,7 +19,6 @@
 @property (nonatomic, assign) id<TrendsFetcherDelegate> delegate;
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) ACAccount *account;
-@property (nonatomic, retain) NSMutableDictionary *parameters;
 @property (nonatomic, retain) NSMutableData *receivedData;
 
 @end
@@ -29,7 +28,6 @@
 @synthesize delegate = _delegate;
 @synthesize connection = _connection;
 @synthesize account = _account;
-@synthesize parameters = _parameters;
 @synthesize receivedData = _receivedData;
 
 - (id)initWithTwitterAccount:(ACAccount *)account
@@ -37,15 +35,6 @@
 {
     self = [super init];
     if (self) {
-        self.parameters = [NSMutableDictionary dictionary];
-        // Get current date into twitter's format
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-        [dateFormatter release];
-        
-        [self.parameters setObject:dateString forKey:@"date"];
-        
         // Twitter account object needed for authentication
         self.account = account;
         
@@ -56,12 +45,18 @@
 
 - (void)fetch
 {
+    // Get current date into twitter's format
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    [dateFormatter release];
+
     // Create a twitter request for attaching to NSURLConnection.
     // HTTP method to use is GET as required by twitter.
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/trends/daily.json"]
-                                             parameters:self.parameters
+                                             parameters:[NSMutableDictionary dictionaryWithObject:dateString forKey:@"date"]
                                           requestMethod:TWRequestMethodGET];
-    
+    //[dateString release];
     [request setAccount:self.account];
     
     self.connection = [NSURLConnection connectionWithRequest:request.signedURLRequest
@@ -69,6 +64,12 @@
     
     [request release];
     self.receivedData = [NSMutableData data];
+}
+
+- (void)cancel
+{
+    [self.connection cancel];
+    self.connection = nil;
 }
 
 - (NSArray *)loadTrends
@@ -106,6 +107,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(fetcherReceivedTrends:trends:)]) {
         [self.delegate fetcherReceivedTrends:self trends:[self loadTrends]];
     }
+    self.receivedData = nil;
 }
 
 // We need to pass any connection errors onto our delegate for handling
@@ -123,7 +125,6 @@
     self.connection = nil;
     
     self.account = nil;
-    self.parameters = nil;
     self.receivedData = nil;
     
     [super dealloc];

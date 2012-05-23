@@ -45,4 +45,10 @@
     return [(NSDictionary *)[self.data objectForKey:@"user"] objectForKey:@"screen_name"];
 }
 
+- (void)dealloc
+{
+    self.data = nil;
+    [super dealloc];
+}
+
 @end
