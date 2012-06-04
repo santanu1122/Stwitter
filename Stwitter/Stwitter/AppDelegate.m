@@ -21,6 +21,11 @@
     UIColor *tintColor = [UIColor colorWithRed:18/255 green:44.0/255 blue:63.0/255 alpha:1.0];
     [[UINavigationBar appearance] setTintColor:tintColor];
     [[UISearchBar appearance] setTintColor:tintColor];
+    
+    SlidingMenuViewController *rootSlidingMenu = [[SlidingMenuViewController alloc] init];
+    
+    self.window.rootViewController = rootSlidingMenu;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 							
