@@ -1,0 +1,3 @@
+[submodule "SlidingMenuViewController"]
+	path = SlidingMenuViewController
+	url = https://github.com/aslong/SlidingMenuViewController.git
