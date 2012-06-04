@@ -14,16 +14,46 @@
 #import "SearchViewController.h"
 
 @interface AccountViewController ()
+{
+    UITableView *_tableView;
+}
 
 @property (nonatomic, retain) ACAccountStore* accountStore;
 @property (nonatomic, retain) NSArray* accounts;
+@property (nonatomic, retain) UITableView *tableView;
 
 @end
 
 @implementation AccountViewController
 
+@synthesize searchViewController = _searchViewController;
+
 @synthesize accountStore = _accountStore;
 @synthesize accounts = _accounts;
+@synthesize tableView = _tableView;
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        CGRect fullScreen = [[UIScreen mainScreen] bounds];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, fullScreen.size.width, fullScreen.size.height) style:UITableViewStylePlain];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        
+        [self.view addSubview:self.tableView];
+    }
+    
+    return self;
+}
+
+- (void)dealloc {
+    self.accountStore = nil;
+    self.accounts = nil;
+    self.tableView = nil;
+    
+    [super dealloc];
+}
 
 - (void)awakeFromNib
 {
@@ -95,11 +125,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (!cell) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ItemTableViewCell"] autorelease];
+    }
 
     ACAccount* account = [self.accounts objectAtIndex:indexPath.row];
     cell.textLabel.text = account.accountDescription;
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.searchViewController.account = [self.accounts objectAtIndex:indexPath.row];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -109,13 +149,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         [[segue destinationViewController] setAccount:[self.accounts objectAtIndex:indexPath.row]];
     }
-}
-
-- (void)dealloc {
-    self.accountStore = nil;
-    self.accounts = nil;
-    
-    [super dealloc];
 }
 
 @end

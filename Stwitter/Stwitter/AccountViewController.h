@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchViewController.h"
 
-@interface AccountViewController : UITableViewController
+@interface AccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    SearchViewController *_searchViewController;
+}
+
+@property (nonatomic, retain) SearchViewController *searchViewController;
 
 @end

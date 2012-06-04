@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "TrendsFetcher.h"
+#import "SlidingMenuViewController.h"
 
 @class ACAccount;
 
 @interface SearchViewController : UIViewController <UITableViewDelegate, UISearchBarDelegate, TrendsFetcherDelegate>
+{
+}
 
 @property (nonatomic, retain) ACAccount* account;
 
-@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-
+- (id)initWithSlidingMenu:(SlidingMenuViewController *)slidingMenuViewController;
+- (void)slideMenu;
 
 @end

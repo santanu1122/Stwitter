@@ -13,9 +13,16 @@
 @class StreamTableViewController;
 
 @interface SearchViewController ()
+{
+    UINavigationBar *navBar;
+    SlidingMenuViewController *_slidingMenuViewController;
+}
 
 @property (retain) NSArray *trends;
 @property (nonatomic, retain) TrendsFetcher *trendsFetcher;
+@property (nonatomic, retain) SlidingMenuViewController *slidingMenuViewController;
+@property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, retain) UITableView *tableView;
 
 - (void)loadTrends;
 - (void)configureView;
@@ -29,8 +36,37 @@
 @synthesize tableView = _tableView;
 @synthesize trends = _trends;
 @synthesize trendsFetcher = _trendsFetcher;
+@synthesize slidingMenuViewController = _slidingMenuViewController;
 
 #pragma mark - Managing the detail item
+
+- (id)initWithSlidingMenu:(SlidingMenuViewController *)slidingMenuViewController
+{
+    self = [super init];
+    if (self) {
+        CGRect fullScreen = [[UIScreen mainScreen] bounds];
+        self.view.frame = CGRectMake(0, 20, fullScreen.size.width, fullScreen.size.height);
+        self.view.backgroundColor = [UIColor blueColor];
+        self.slidingMenuViewController = slidingMenuViewController;
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        
+        navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, fullScreen.size.width, 45)];
+        UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Accounts" 
+                                                                        style:UIBarButtonSystemItemDone 
+                                                                       target:self 
+                                                                       action:@selector(slideMenu)];
+        UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Search"];
+        item.leftBarButtonItem = leftButton;
+        item.hidesBackButton = YES;
+        [navBar pushNavigationItem:item animated:NO];
+        [leftButton release];
+        [item release];
+        
+        [self.view addSubview:navBar];
+    }
+    
+    return self;
+}
 
 - (void)setAccount:(ACAccount *)newAccount
 {
@@ -39,6 +75,7 @@
         
         // Update the view.
         [self configureView];
+        [self.slidingMenuViewController slide];
     }
 }
 
@@ -52,7 +89,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self.searchBar becomeFirstResponder];
+    [self.view addSubview:self.searchBar];
+    //[self.searchBar becomeFirstResponder];
 }
 
 - (void)viewDidUnload
@@ -65,6 +103,11 @@
     [self.trendsFetcher cancel];
     self.trendsFetcher = nil;
     self.trends = nil;
+}
+
+- (void)slideMenu
+{
+    [self.slidingMenuViewController slide];
 }
 
 - (void)loadTrends

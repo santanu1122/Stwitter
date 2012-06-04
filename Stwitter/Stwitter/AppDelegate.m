@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "SlidingMenuViewController.h"
+#import "AccountViewController.h"
+#import "SearchViewController.h"
 
 @implementation AppDelegate
 
@@ -22,10 +24,21 @@
     [[UINavigationBar appearance] setTintColor:tintColor];
     [[UISearchBar appearance] setTintColor:tintColor];
     
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
     SlidingMenuViewController *rootSlidingMenu = [[SlidingMenuViewController alloc] init];
+    AccountViewController *accountViewController = [[AccountViewController alloc] init];
+    SearchViewController *searchViewController = [[SearchViewController alloc] initWithSlidingMenu:rootSlidingMenu];
+    
+    accountViewController.searchViewController = searchViewController;
+    
+    rootSlidingMenu.menuViewController = accountViewController;
+    rootSlidingMenu.slidingViewController = searchViewController;
     
     self.window.rootViewController = rootSlidingMenu;
+    [self.window addSubview:rootSlidingMenu.view];
     [self.window makeKeyAndVisible];
+    [rootSlidingMenu slideOpen];
     return YES;
 }
 							
