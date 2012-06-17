@@ -1,24 +1,25 @@
 //
-//  SearchViewController.h
+//  SearchView2Controller.h
 //  Stwitter
 //
-//  Created by Andrew Long on 5/18/12.
+//  Created by Andrew Long on 6/16/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "TrendsFetcher.h"
-#import "SlidingMenuViewController.h"
 
 @class ACAccount;
 
-@interface SearchViewController : UIViewController <UITableViewDelegate, UISearchBarDelegate, TrendsFetcherDelegate>
-{
-}
+@protocol SearchViewDelegate <NSObject>
 
-@property (nonatomic, retain) ACAccount* account;
+- (ACAccount*)account;
 
-- (id)initWithSlidingMenu:(SlidingMenuViewController *)slidingMenuViewController;
-- (void)slideMenu;
+@end
+
+@interface SearchViewController : UIViewController <UISearchBarDelegate>
+
+@property (nonatomic, retain) id<SearchViewDelegate> delegate;
+
+- (id)initWithDelegate:(id<SearchViewDelegate>)delegate;
 
 @end

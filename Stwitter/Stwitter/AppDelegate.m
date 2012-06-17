@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "SlidingMenuViewController.h"
 #import "AccountViewController.h"
+#import "TrendsViewController.h"
+#import "SearchTabBarViewController.h"
 #import "SearchViewController.h"
 
 @implementation AppDelegate
@@ -26,18 +28,24 @@
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    SlidingMenuViewController *rootSlidingMenu = [[SlidingMenuViewController alloc] init];
-    AccountViewController *accountViewController = [[AccountViewController alloc] init];
-    SearchViewController *searchViewController = [[SearchViewController alloc] initWithSlidingMenu:rootSlidingMenu];
+    SlidingMenuViewController *rootSlidingMenu = [[[SlidingMenuViewController alloc] init] autorelease];
+    AccountViewController *accountViewController = [[[AccountViewController alloc] init] autorelease];
+    TrendsViewController *trendsViewController = [[[TrendsViewController alloc] initWithSlidingMenu:rootSlidingMenu] autorelease];
+    SearchViewController *searchViewController = [[[SearchViewController alloc] initWithDelegate:trendsViewController] autorelease];
     
-    accountViewController.searchViewController = searchViewController;
+    
+    SearchTabBarViewController *searchTabBarController = [[[SearchTabBarViewController alloc] initWithControllers:[NSArray arrayWithObjects:trendsViewController, searchViewController, nil] andSlidingMenuViewController:rootSlidingMenu] autorelease];
+    
+    accountViewController.searchViewController = trendsViewController;
     
     rootSlidingMenu.menuViewController = accountViewController;
-    rootSlidingMenu.slidingViewController = searchViewController;
+    rootSlidingMenu.slidingViewController = searchTabBarController;
+    rootSlidingMenu.allowRotation = NO;
     
     self.window.rootViewController = rootSlidingMenu;
     [self.window addSubview:rootSlidingMenu.view];
     [self.window makeKeyAndVisible];
+    
     [rootSlidingMenu slideOpen];
     return YES;
 }

@@ -1,94 +1,106 @@
 //
-//  SearchViewController.m
+//  SearchView2Controller.m
 //  Stwitter
 //
-//  Created by Andrew Long on 5/18/12.
+//  Created by Andrew Long on 6/16/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import "SearchViewController.h"
+#import "StreamTableViewController.h"
 #import "FilteredTwitterStream.h"
-#import "Trend.h"
-
-@class StreamTableViewController;
 
 @interface SearchViewController ()
 {
-    UINavigationBar *navBar;
-    SlidingMenuViewController *_slidingMenuViewController;
+    UIButton *_dismissBackground;
 }
 
-@property (retain) NSArray *trends;
-@property (nonatomic, retain) TrendsFetcher *trendsFetcher;
-@property (nonatomic, retain) SlidingMenuViewController *slidingMenuViewController;
 @property (nonatomic, retain) UISearchBar *searchBar;
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) FilteredTwitterStream *stream;
+@property (nonatomic, retain) UIButton *dismissBackground;
 
-- (void)loadTrends;
-- (void)configureView;
+- (void)pushStreamViewWithKeywords:(NSArray *)keywords;
+- (void)dismissKeyboard;
 
 @end
 
 @implementation SearchViewController
 
-@synthesize account = _account;
 @synthesize searchBar = _searchBar;
-@synthesize tableView = _tableView;
-@synthesize trends = _trends;
-@synthesize trendsFetcher = _trendsFetcher;
-@synthesize slidingMenuViewController = _slidingMenuViewController;
+@synthesize delegate = _delegate;
+@synthesize stream = _stream;
+@synthesize dismissBackground = _dismissBackground;
 
-#pragma mark - Managing the detail item
-
-- (id)initWithSlidingMenu:(SlidingMenuViewController *)slidingMenuViewController
+- (id)initWithDelegate:(id<SearchViewDelegate>)delegate
 {
     self = [super init];
     if (self) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        // Custom initialization
         CGRect fullScreen = [[UIScreen mainScreen] bounds];
-        self.view.frame = CGRectMake(0, 20, fullScreen.size.width, fullScreen.size.height);
-        self.view.backgroundColor = [UIColor blueColor];
-        self.slidingMenuViewController = slidingMenuViewController;
-        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-        
-        navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, fullScreen.size.width, 45)];
-        UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Accounts" 
-                                                                        style:UIBarButtonSystemItemDone 
-                                                                       target:self 
-                                                                       action:@selector(slideMenu)];
-        UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Search"];
-        item.leftBarButtonItem = leftButton;
-        item.hidesBackButton = YES;
-        [navBar pushNavigationItem:item animated:NO];
-        [leftButton release];
-        [item release];
-        
-        [self.view addSubview:navBar];
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, fullScreen.size.width, 45)];
+        self.dismissBackground  = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.dismissBackground.frame = CGRectMake(0, 45, fullScreen.size.width, fullScreen.size.height);
+        [self.dismissBackground addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchUpInside];
+        self.searchBar.delegate = self;
+        self.delegate = delegate;
+        self.stream = nil;
+        self.title = @"Search";
+        [self.view addSubview:self.searchBar];
+        [self.view addSubview:self.dismissBackground];
+        self.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0] autorelease];
     }
-    
     return self;
 }
 
-- (void)setAccount:(ACAccount *)newAccount
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    if (_account != newAccount) {
-        _account = newAccount;
-        
-        // Update the view.
-        [self configureView];
-        [self.slidingMenuViewController slide];
-    }
+    [self pushStreamViewWithKeywords:[self.searchBar.text componentsSeparatedByString:@" "]];
+    [self.dismissBackground setHidden:YES];
 }
 
-- (void)configureView
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    self.trends = [NSArray array];
-    [self loadTrends];
+    [self.dismissBackground setHidden:NO];
+    [self.stream stop];
+    
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.stream stop];
+    [self.dismissBackground setHidden:NO];
+}
+
+- (void)dismissKeyboard
+{
+    [self.searchBar resignFirstResponder];
+    [self.dismissBackground setHidden:YES];
+}
+
+- (void)pushStreamViewWithKeywords:(NSArray *)keywords
+{
+    [self.searchBar resignFirstResponder];
+    StreamTableViewController *streamViewController = [[StreamTableViewController alloc] init];
+    self.stream = nil;
+    self.stream = [[FilteredTwitterStream alloc] initWithKeywords:(NSArray *)keywords 
+                                                                             account:self.delegate.account
+                                                                            delegate:streamViewController];
+    
+    [streamViewController setStream:self.stream];
+    CGRect frame = streamViewController.view.frame;
+    frame.origin.y += 25;
+    frame.size.height -= 95;
+    streamViewController.view.frame = frame;
+    
+    [self.view insertSubview:streamViewController.view belowSubview:self.searchBar];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	// Do any additional setup after loading the view.
     [self.view addSubview:self.searchBar];
     //[self.searchBar becomeFirstResponder];
 }
@@ -98,96 +110,31 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     self.searchBar = nil;
-    self.tableView = nil;
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     
-    [self.trendsFetcher cancel];
-    self.trendsFetcher = nil;
-    self.trends = nil;
-}
-
-- (void)slideMenu
-{
-    [self.slidingMenuViewController slide];
-}
-
-- (void)loadTrends
-{
-    self.trendsFetcher = [[TrendsFetcher alloc] initWithTwitterAccount:self.account
-                                                              delegate:self];
-    
-    [self.trendsFetcher fetch];
-    [self.trendsFetcher release];
-}
-
-- (void)fetcherReceivedTrends:(TrendsFetcher *)fetcher trends:(NSArray *)trends;
-{
-    self.trends = trends;
-    [self.tableView reloadData];
-}
-
-- (void)fetcherDidFailConnection:(TrendsFetcher *)fetcher
-{
-    NSLog(@"Trend fetcher failed connection");
+    [super viewWillDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.trends count];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Top Trends";
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    Trend *trend = [self.trends objectAtIndex:indexPath.row];
-    cell.textLabel.text = trend.name;
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    Trend *trend = [self.trends objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"showStream" sender:[NSArray arrayWithObject:trend.query]];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [self performSegueWithIdentifier:@"showStream" sender:[self.searchBar.text componentsSeparatedByString:@" "]];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)keywords
-{
-    if ([[segue identifier] isEqualToString:@"showStream"]) {
-        FilteredTwitterStream *stream = [[[FilteredTwitterStream alloc] initWithKeywords:(NSArray *)keywords 
-                                                                                 account:self.account
-                                                                                delegate:[segue destinationViewController]] autorelease];
-        
-        id destinationViewController = [segue destinationViewController];
-        if ([destinationViewController respondsToSelector:@selector(setStream:)]) {
-            [destinationViewController performSelector:@selector(setStream:) withObject:stream];
-        }
-    }
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)dealloc
 {
     self.searchBar = nil;
-    self.tableView = nil;
-    self.trends = nil;
-    self.trendsFetcher = nil;
-    
     [super dealloc];
 }
 

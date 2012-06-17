@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SearchViewController.h"
+#import "TrendsViewController.h"
 
 @interface AccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-    SearchViewController *_searchViewController;
+    TrendsViewController *_searchViewController;
 }
 
-@property (nonatomic, retain) SearchViewController *searchViewController;
+@property (nonatomic, retain) TrendsViewController *searchViewController;
 
 @end

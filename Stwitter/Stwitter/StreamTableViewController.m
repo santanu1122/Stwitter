@@ -62,7 +62,9 @@
 {
     [super viewWillDisappear:animated];
     
-    [self.stream stop];
+    if (self.stream) {
+        [self.stream stop];
+    }
 }
 
 - (void)viewDidUnload
@@ -94,6 +96,11 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
+    if (!cell) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell.detailTextLabel.numberOfLines = 0;
+    }
+    
     Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
     cell.textLabel.text = tweet.username;
     cell.detailTextLabel.text = tweet.text;

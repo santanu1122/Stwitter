@@ -11,7 +11,7 @@
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 
-#import "SearchViewController.h"
+#import "TrendsViewController.h"
 
 @interface AccountViewController ()
 {
@@ -137,6 +137,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.searchViewController.account = [self.accounts objectAtIndex:indexPath.row];
 }
 
