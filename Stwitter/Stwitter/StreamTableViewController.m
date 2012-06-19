@@ -16,11 +16,15 @@
 @interface StreamTableViewController ()
 
 @property (retain) NSMutableArray* tweets;
+@property (retain) NSMutableArray* tweetDisplayQueue;
+@property (assign) BOOL tweetDisplayTimer;
 
 - (void)streamReceivedMessage:(TwitterStream *)stream json:(id)json;
 - (void)streamReceivedMessageJsonError:(TwitterStream *)stream errorMessage:(NSString *)errorMessage;
 - (void)streamDidTimeout:(TwitterStream *)stream;
 - (void)streamDidFailConnection:(TwitterStream *)stream;
+
+- (void)emptyTweetDisplayQueue;
 
 @end
 
@@ -28,6 +32,19 @@
 
 @synthesize stream = _stream;
 @synthesize tweets = _tweets;
+@synthesize tweetDisplayQueue = _tweetDisplayQueue;
+@synthesize tweetDisplayTimer = _tweetDisplayTimer;
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.tweetDisplayQueue = [NSMutableArray array];
+        self.tweetDisplayTimer = YES;
+    }
+    
+    return self;
+}
 
 - (void)setStream:(id)newStream
 {
@@ -55,7 +72,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = self.stream.keywordString;
+}
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    CGRect frame = self.tableView.frame;
+//    frame.origin.x += 30;
+    //frame.size.width -= 60;
+    //self.tableView.frame = frame;
+    
+    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -80,6 +106,35 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)emptyTweetDisplayQueue
+{     
+    @synchronized (self.tweetDisplayQueue) {
+        NSArray *tweetDisplayQueueCopy = [self.tweetDisplayQueue copy];
+        self.tweetDisplayQueue = [NSMutableArray array];
+    
+    
+        NSMutableArray *indexPaths = [NSMutableArray array];
+        for (int i = 0; i < [tweetDisplayQueueCopy count] && i < 10; i++)
+        {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            [self.tweets insertObject:[tweetDisplayQueueCopy objectAtIndex:i] atIndex:i];
+        }
+        [self.tableView insertRowsAtIndexPaths:indexPaths
+                              withRowAnimation:UITableViewRowAnimationTop];
+        
+        if ([self.tweets count] > MAX_TWEET_LOAD_LIMIT) {
+            [self.tweets removeObjectAtIndex:MAX_TWEET_LOAD_LIMIT];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:MAX_TWEET_LOAD_LIMIT inSection:0]]
+                                  withRowAnimation:UITableViewRowAnimationBottom];
+        }
+        
+    //    [self.tweetDisplayTimer invalidate];
+    //    self.tweetDisplayTimer = nil;
+        self.tweetDisplayTimer = YES;
+    }
+
 }
 
 #pragma mark - Table view data source
@@ -123,14 +178,16 @@
 
 - (void)streamReceivedMessage:(TwitterStream *)stream json:(id)json
 {
-    [self.tweets insertObject:[Tweet fromJson:json] atIndex:0];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationNone];
-    
-    if ([self.tweets count] > MAX_TWEET_LOAD_LIMIT) {
-        [self.tweets removeObjectAtIndex:MAX_TWEET_LOAD_LIMIT];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:MAX_TWEET_LOAD_LIMIT inSection:0]]
-                              withRowAnimation:UITableViewRowAnimationNone];
+    [self.tweetDisplayQueue insertObject:[Tweet fromJson:json] atIndex:0];
+    if (self.tweetDisplayTimer) {
+        /*self.tweetDisplayTimer = [NSTimer timerWithTimeInterval:.25
+                                                         target:self
+                                                       selector:@selector(emptyTweetDisplayQueue)
+                                                       userInfo:nil
+                                                        repeats:NO];
+        */
+        self.tweetDisplayTimer = NO;
+        [self performSelector:@selector(emptyTweetDisplayQueue) withObject:nil afterDelay:.30];
     }
 }
 

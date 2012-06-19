@@ -586,6 +586,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew Long (L22NM6343J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew Long (L22NM6343J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stwitter/Stwitter-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -599,6 +601,9 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "21378F7D-3918-4938-A5EB-3FE8436108F5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21378F7D-3918-4938-A5EB-3FE8436108F5";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${TARGET_BUILD_DIR}\"/** “$(BUILT_PRODUCTS_DIR)”/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -608,6 +613,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew Long (L22NM6343J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Andrew Long";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stwitter/Stwitter-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -621,6 +628,9 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "21378F7D-3918-4938-A5EB-3FE8436108F5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "“$(BUILT_PRODUCTS_DIR)”/** \"$(BUILD_ROOT)\"/../IntermediateBuildFilesPath/UninstalledProducts/**";
 				WRAPPER_EXTENSION = app;
 			};
