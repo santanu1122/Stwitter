@@ -38,7 +38,6 @@
 		49E7F70F1569A17C009AAA16 /* StreamTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E7F70E1569A17C009AAA16 /* StreamTableViewController.m */; };
 		49E7F733156AD544009AAA16 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F732156AD544009AAA16 /* MapKit.framework */; };
 		49E7F735156AD54A009AAA16 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F734156AD54A009AAA16 /* ImageIO.framework */; };
-		49E7F768156ADE12009AAA16 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E7F765156ADE0C009AAA16 /* libSDWebImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +135,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4950C375157C486900CA7570 /* libSlidingMenu.a in Frameworks */,
-				49E7F768156ADE12009AAA16 /* libSDWebImage.a in Frameworks */,
 				49E7F735156AD54A009AAA16 /* ImageIO.framework in Frameworks */,
 				49E7F733156AD544009AAA16 /* MapKit.framework in Frameworks */,
 				490619941566EECE0088D940 /* Accounts.framework in Frameworks */,
